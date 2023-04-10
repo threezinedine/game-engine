@@ -1,15 +1,14 @@
+#pragma once
+
 #include "Core.hpp"
-
-
-#define MAX_FRAMES 60
+#include <iostream>
 
 
 namespace TTEngine {
-    class TTE_API Application {
+    class Application {
         public:
             Application();
             ~Application();
-
             void run();
     };
 }
