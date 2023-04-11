@@ -5,7 +5,7 @@
 
 
 namespace TTEngine {
-    class Application {
+    class TTE_API Application {
         public:
             Application();
             ~Application();

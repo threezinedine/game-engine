@@ -3,9 +3,6 @@
 #include <memory>
 
 
-int main(int argc, char* argv[]) {
-    std::cout << "Hello World" << std::endl;
-    std::shared_ptr<TTEngine::Application> app = std::make_shared<TTEngine::Application>();
-    // app->run();
-    return 0;
+std::shared_ptr<TTEngine::Application> TTEngine::createApplication() {
+    return std::make_shared<TTEngine::Application>();
 }

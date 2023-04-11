@@ -13,6 +13,6 @@ namespace TTEngine {
 
     void Application::run() {
         std::cout << "Application running!" << std::endl;
-        while (true);
+        // while (true);
     }
 }
