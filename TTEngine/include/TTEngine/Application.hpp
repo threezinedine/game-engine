@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Core.hpp"
-#include <iostream>
+#include "PrecompileHeader.hpp"
 
 
 namespace TTEngine {
@@ -9,6 +9,6 @@ namespace TTEngine {
         public:
             Application();
             ~Application();
-            void run();
+            virtual void run();
     };
 }

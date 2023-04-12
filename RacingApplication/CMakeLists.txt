@@ -2,7 +2,10 @@ cmake_minimum_required(VERSION 3.24.1)
 
 project(RacingApplication)
 
-include_directories(${CMAKE_SOURCE_DIR}/../TTEngine/include)
+include_directories(
+    ${CMAKE_SOURCE_DIR}/../TTEngine/include
+    ${CMAKE_SOURCE_DIR}/../TTEngine/vendor/spdlog/include
+)
 link_directories(${CMAKE_SOURCE_DIR}/../TTEngine/build)
 
 if(WIN32)

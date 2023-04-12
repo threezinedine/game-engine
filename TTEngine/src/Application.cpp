@@ -4,7 +4,7 @@
 
 namespace TTEngine {
     Application::Application() {
-        std::cout << "Application created! (TESTED)" << std::endl;
+        std::cout << "Application created! (MODIFIED)" << std::endl;
     }
 
     Application::~Application() {

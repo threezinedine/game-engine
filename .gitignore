@@ -1108,6 +1108,7 @@ Thumbs.db
 !/doc/Doxyfile
 
 # VS Code
+.vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
