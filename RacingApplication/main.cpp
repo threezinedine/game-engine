@@ -1,29 +1,15 @@
 #include <TTEngine/TTEngine.hpp>
 #include <iostream>
 #include <memory>
+#include <TTEngine/events/Event.hpp>
+#include <TTEngine/events/KeyEvent.hpp>
 
 
 class RacingApplication: public TTEngine::Application {
     public:
-        RacingApplication() {
-            std::cout << "RacingApplication constructor" << std::endl;
-        }
-
+        RacingApplication(): TTEngine::Application() {}
         ~RacingApplication() {
-            std::cout << "RacingApplication destructor" << std::endl;
-        }
-
-        void run() override {
-            std::cout << "RacingApplication run" << std::endl;
-            TTEngine::KeyPressedEvent event(1, 2);
-            TTEngine::KeyEvent& e = event;
-            TTE_CORE_INFO("Event: {0}", e.getName());
-
-            if (e.isInCategory(TTEngine::EventCategory::EventCategoryKeyboard)) {
-                TTE_CORE_INFO("Event is in category EventCategoryKeyboard");
-            } else {
-                TTE_CORE_INFO("Event is not in category EventCategoryKeyboard");
-            }
+            TTEngine::Application::~Application();
         }
 };
 

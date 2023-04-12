@@ -5,3 +5,4 @@
 #include <sstream>
 #include <functional>
 #include <memory>
+#include "TTEngine/Logging.hpp"

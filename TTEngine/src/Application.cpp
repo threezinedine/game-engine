@@ -1,18 +1,45 @@
 #include <iostream>
 #include "TTEngine/Application.hpp"
+#include "TTEngine/platforms/PlatformType.hpp"
+#include "TTEngine/platforms/WindowFactory.hpp"
+#include "TTEngine/Window.hpp"
+#include "TTEngine/events/WindowEvent.hpp"
+#include "TTEngine/events/Event.hpp"
 
 
 namespace TTEngine {
-    Application::Application() {
-        std::cout << "Application created! (MODIFIED)" << std::endl;
-    }
+    Application::Application():
+        m_window(createWindow(Windows, WindowProps{
+            DEFAULT_WINDOW_HEIGHT,
+            DEFAULT_WINDOW_WIDTH,
+            DEFAULT_WINDOW_TITLE
+        })), m_eventDispatcher(std::make_shared<EventDispatcher>()) {
+            m_eventDispatcher->setOnEventCallback([this](Event& event) {
+                onEvent(event);
+            });
+            m_window.setDispatcher(m_eventDispatcher);
+            m_window.init();
+        }
 
     Application::~Application() {
-        std::cout << "Application destroyed! (TESTED)" << std::endl;
+    }
+
+    void Application::onEvent(Event& event) {
+        TTE_CORE_TRACE("Event: {0}", event.toString());
+        switch(event.getEventType()) {
+            case EventType::WindowClose:
+                onCloseWindow();
+                break;
+        }
+    }
+
+    void Application::onCloseWindow() {
+        m_running = false;
     }
 
     void Application::run() {
-        std::cout << "Application running!" << std::endl;
-        // while (true);
+        while (m_running) {
+            m_window.onUpdate();
+        };
     }
 }

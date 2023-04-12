@@ -1,11 +1,12 @@
 #pragma once
 
-#include "TTEngine/Core.hpp"
+#include <PrecompileHeader.hpp>
 #include "Event.hpp"
-#include "PrecompileHeader.hpp"
 
 
 namespace TTEngine {
+    std::unique_ptr<Event> event;
+
     class KeyEvent : public Event {
         public:
             inline int getKeyCode() { return keyCode; }

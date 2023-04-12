@@ -3,6 +3,7 @@
 #include "PrecompileHeader.hpp"
 #include "Application.hpp"
 #include "Logging.hpp"
+#include "Window.hpp"
 
 
 #ifndef BUILD_DLL
@@ -12,7 +13,8 @@ namespace TTEngine {
 
 int main(int argc, char* argv[]) {
     TTEngine::Logging::init();
-    TTE_CORE_INFO("Initialize Logging");
+    TTE_CORE_INFO("Initialize Core Logging");
+    TTE_INFO("Initialize Logging");
     std::shared_ptr<TTEngine::Application> app = TTEngine::createApplication();
     app->run();
     return 0;

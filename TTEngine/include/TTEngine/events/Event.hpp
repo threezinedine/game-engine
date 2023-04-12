@@ -1,12 +1,12 @@
 #pragma once
-#include "TTEngine/TTEngine.hpp"
 #include "PrecompileHeader.hpp"
+#include "TTEngine/TTEngine.hpp"
 
 
 namespace TTEngine {
     enum class EventType {
         None = 0,
-        WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
+        WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved, WindowIntialize,
         AppTick, AppUpdate, AppRender,
         KeyPressed, KeyReleased,
         MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
@@ -27,7 +27,6 @@ namespace TTEngine {
 #define EVENT_CLASS_CATEGORY(category) virtual int getCategoryValue() override { return category; }
 
     class Event {
-        friend class EventDispatcher;
         public:
             virtual EventType getEventType() = 0;
             virtual std::string getName() = 0;
@@ -41,11 +40,23 @@ namespace TTEngine {
 
     class EventDispatcher {
         public:
-            EventDispatcher(Event& event) : m_event(event) {}
+            EventDispatcher() {
+                TTE_CORE_INFO("Initializing dispatcher");
+            }
+
+            ~EventDispatcher() {
+                TTE_CORE_INFO("Destructuring dispatcher");
+            }
+
+            void setOnEventCallback(std::function<void(Event&)> eventCallback) {
+                TTE_CORE_TRACE("Set onEvent callback");
+                m_eventCallback = eventCallback;
+            }
+
             void dispatch(Event& event) {
-                TTE_CORE_TRACE("Event: {0}", event.toString());
+                m_eventCallback(event);
             }
         private:
-            Event& m_event;
+            std::function<void(Event&)> m_eventCallback;
     };
 }

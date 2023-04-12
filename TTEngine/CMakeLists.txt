@@ -17,6 +17,8 @@ add_definitions(-DBUILD_DLL)
 
 add_library(${PROJECT_NAME} SHARED ${SRC_FILES})
 # target_precompile_headers(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/PrecompileHeader.hpp)
-target_link_libraries(${PROJECT_NAME} spdlog)
-target_link_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/build/vendor/spdlog)
-target_link_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/build/vendor/glfw)
+target_link_libraries(${PROJECT_NAME} spdlog glfw)
+target_link_directories(${PROJECT_NAME} PUBLIC 
+    ${CMAKE_CURRENT_SOURCE_DIR}/build/vendor/spdlog
+    ${CMAKE_CURRENT_SOURCE_DIR}/build/vendor/glfw/src
+)
