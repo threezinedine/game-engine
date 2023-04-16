@@ -5,6 +5,8 @@
 
 
 namespace TTEngine {
+    class EventDispatcher;
+
     struct WindowProps {
         int height;
         int width;

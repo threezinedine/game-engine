@@ -6,3 +6,5 @@
 #include <functional>
 #include <memory>
 #include "TTEngine/Logging.hpp"
+#include "TTEngine/Layer.hpp"
+#include "TTEngine/Core.hpp"

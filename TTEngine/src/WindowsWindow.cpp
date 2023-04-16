@@ -1,3 +1,4 @@
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "TTEngine/platforms/WindowsWindow.hpp"
 #include "TTEngine/events/WindowEvent.hpp"
@@ -40,6 +41,8 @@ namespace TTEngine {
                                 NULL, 
                                 NULL
                             );
+
+        gladLoadGL();
 
         if (!window) {
             TTE_CORE_ERROR("Failed to create GLFW window!");

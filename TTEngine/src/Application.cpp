@@ -31,6 +31,8 @@ namespace TTEngine {
                 onCloseWindow();
                 break;
         }
+
+        m_layerStack.onEvent(event);
     }
 
     void Application::onCloseWindow() {
@@ -40,6 +42,15 @@ namespace TTEngine {
     void Application::run() {
         while (m_running) {
             m_window.onUpdate();
+            m_layerStack.onUpdate();
         };
+    }
+
+    void Application::pushLayer(Layer* layer) {
+        m_layerStack.pushLayer(layer);
+    }
+
+    void Application::popLayer(Layer* layer) {
+        m_layerStack.popLayer(layer);
     }
 }

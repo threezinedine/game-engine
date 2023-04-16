@@ -1,6 +1,5 @@
 #pragma once
 #include "PrecompileHeader.hpp"
-#include "TTEngine/TTEngine.hpp"
 
 
 namespace TTEngine {
@@ -36,6 +35,17 @@ namespace TTEngine {
             inline bool isInCategory(EventCategory category) {
                 return getCategoryValue() & category;
             }
+
+            inline bool shouldPropagateEvent() {
+                return m_propagateEvent;
+            }
+
+            void stopPropagation() {
+                m_propagateEvent = false;
+            }
+
+        private:
+            bool m_propagateEvent = true;
     };
 
     class EventDispatcher {
@@ -56,6 +66,7 @@ namespace TTEngine {
             void dispatch(Event& event) {
                 m_eventCallback(event);
             }
+
         private:
             std::function<void(Event&)> m_eventCallback;
     };

@@ -4,6 +4,9 @@
 #include "PrecompileHeader.hpp"
 #include "Window.hpp"
 #include "events/Event.hpp"
+#include "LayerStack.hpp"
+#include "Layer.hpp"
+#include "constants.hpp"
 
 
 namespace TTEngine {
@@ -19,9 +22,13 @@ namespace TTEngine {
             void onEvent(Event& event);
             void onCloseWindow();
 
+            void pushLayer(Layer* layer);
+            void popLayer(Layer* layer);
+
         private:
             bool m_running = true;
             Window& m_window;
             std::shared_ptr<EventDispatcher> m_eventDispatcher;
+            LayerStack m_layerStack;
     };
 }
